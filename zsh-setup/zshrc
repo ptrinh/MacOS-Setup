@@ -48,9 +48,6 @@ alias g='git'
 alias gs='git status'
 alias gd='git diff'
 
-# USDT/VND exchange rate
-vnd() { curl "https://aloride.com/aloride/usdtvnd.php?$1" }
-
 # fzf: Ctrl+R fuzzy history, Ctrl+T insert file path, Alt+C cd into a folder
 source <(fzf --zsh)
 
