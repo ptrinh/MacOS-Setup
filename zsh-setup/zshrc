@@ -50,12 +50,18 @@ alias gd='git diff'
 # USDT/VND exchange rate
 vnd() { curl "https://aloride.com/aloride/usdtvnd.php?$1" }
 
+# fzf: Ctrl+R fuzzy history, Ctrl+T insert file path, Alt+C cd into a folder
+source <(fzf --zsh)
+
 # Autosuggestions, then syntax highlighting (must be the last widget plugin)
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Starship prompt (~/.config/starship.toml)
 eval "$(starship init zsh)"
+
+# zoxide: `z part-of-name` jumps to a frequently used folder, `zi` picks one with fzf
+eval "$(zoxide init zsh)"
 
 # Machine-specific settings and secrets (not in the repo)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

@@ -13,8 +13,8 @@ put() {
   cp "$1" "$2"
 }
 
-echo "Installing zsh plugins and Starship..."
-brew install starship zsh-autosuggestions zsh-syntax-highlighting
+echo "Installing zsh plugins, Starship, fzf, zoxide..."
+brew install starship zsh-autosuggestions zsh-syntax-highlighting fzf zoxide
 
 echo "Installing font..."
 FONT=~/Library/Fonts/SourceCodePro+Powerline+Awesome+Regular.ttf
@@ -33,6 +33,10 @@ grep -q 'brew shellenv' ~/.zprofile 2>/dev/null || echo 'eval "$(/opt/homebrew/b
 echo "Installing iTerm2 profile..."
 put iterm2-profile.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/MacOS-Setup.json
 defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "7C1F3E2A-5B8D-4E6F-9A10-2D4C6B8E0F13"
+
+echo "Installing Ghostty config..."
+put ghostty/config ~/.config/ghostty/config
+for t in ghostty/themes/*; do put "$t" ~/.config/ghostty/themes/"${t:t}"; done
 
 echo "Installing Terminal profile..."
 defaults write com.apple.Terminal "Window Settings" -dict-add "Clear Dark" "$(sed -n '/^<dict>/,$p' 'Clear Dark.terminal' | sed '$d')"

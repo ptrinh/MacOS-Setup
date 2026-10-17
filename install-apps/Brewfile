@@ -9,6 +9,7 @@ tap "ptrinh/relaykey"
 cask "google-chrome"
 cask "microsoft-edge"
 cask "iterm2"
+cask "ghostty"            # GPU-accelerated native terminal (config in zsh-setup)
 cask "textmate"
 cask "discord"
 cask "slack"

@@ -1,0 +1,20 @@
+# Ghostty config, matching the iTerm2 / Terminal setup (colors converted from iterm2-profile.json)
+theme = light:MacOS-Setup Light,dark:MacOS-Setup Dark
+font-family = "SourceCodePro+Powerline+Awesome Regular"
+font-size = 16
+
+window-width = 80
+window-height = 25
+window-save-state = never
+confirm-close-surface = false
+quit-after-last-window-closed = true
+shell-integration-features = no-cursor,sudo,title
+copy-on-select = clipboard
+
+# Same line-editing keys as in iTerm2/Terminal (readline/emacs sequences zsh understands)
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+keybind = alt+backspace=esc:\x7f
+keybind = super+left=text:\x01
+keybind = super+right=text:\x05
+keybind = super+backspace=text:\x15
