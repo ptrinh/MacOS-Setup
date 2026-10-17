@@ -18,3 +18,5 @@ keybind = alt+backspace=esc:\x7f
 keybind = super+left=text:\x01
 keybind = super+right=text:\x05
 keybind = super+backspace=text:\x15
+keybind = delete=text:\x04
+keybind = alt+delete=esc:d
