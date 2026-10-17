@@ -1,7 +1,7 @@
 # MacOS-Setup
 
-Các script / cấu hình tự động hoá cho macOS.
+Scripts and configuration for automating macOS.
 
-| Thư mục | Mô tả |
+| Folder | Description |
 |---|---|
-| [`charge-by-location`](charge-by-location/) | Tự đổi charge limit 80% / 100% theo vị trí (router) |
+| [`charge-by-location`](charge-by-location/) | Auto-switch the charge limit between 80% / 100% based on location (router) |

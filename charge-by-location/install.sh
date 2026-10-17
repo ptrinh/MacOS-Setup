@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Cài script + LaunchAgent (chạy mỗi giờ và khi đăng nhập). Chạy lại được nhiều lần.
+# Install the script + LaunchAgent (runs hourly and at login). Safe to re-run.
 set -e
 cd "${0:A:h}"
 LABEL=com.phil.charge-by-location
@@ -9,5 +9,5 @@ install -m 644 $LABEL.plist ~/Library/LaunchAgents/
 launchctl bootout gui/$(id -u)/$LABEL 2>/dev/null || true
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/$LABEL.plist
 shortcuts list | grep -qx 'Charge 80' && shortcuts list | grep -qx 'Charge 100' \
-  || echo "⚠️  Chưa có shortcut 'Charge 80' / 'Charge 100' — tạo trong app Shortcuts."
-echo "Đã cài. Kiểm tra: cat ~/.charge_loc ~/.charge_loc.log"
+  || echo "⚠️  Shortcuts 'Charge 80' / 'Charge 100' not found. Create them in the Shortcuts app."
+echo "Installed. Check: cat ~/.charge_loc ~/.charge_loc.log"

@@ -1,34 +1,34 @@
 # charge-by-location
 
-Tự đổi charge limit của MacBook theo vị trí:
+Automatically switches the MacBook charge limit based on where you are:
 
-- **Đổi chỗ** (router khác) → sạc **100%** (đang di chuyển, cần pin đầy).
-- **Ở yên một chỗ ≥ 24h** → hạ xuống **80%** (cắm sạc lâu, giữ pin).
+- **Moved** (different router) → charge to **100%** (you're on the go and want a full battery).
+- **Stayed in one place ≥ 24h** → lower to **80%** (plugged in for a long time, protect the battery).
 
-Vị trí được nhận diện bằng MAC của router (default gateway). LaunchAgent chạy script mỗi giờ và khi đăng nhập.
+The location is identified by the MAC address of the router (default gateway). A LaunchAgent runs the script every hour and at login.
 
-## Cài đặt
+## Install
 
-1. Tạo 2 shortcut trong app **Shortcuts**, tên chính xác `Charge 80` và `Charge 100`. Mỗi cái chỉ cần 1 action đặt charge limit (gõ "charge" để tìm), lần lượt 80% và 100%.
-2. Chạy:
+1. In the **Shortcuts** app, create 2 shortcuts named exactly `Charge 80` and `Charge 100`. Each needs a single action that sets the charge limit (search for "charge"), set to 80% and 100% respectively.
+2. Run:
    ```sh
    ./install.sh
    ```
 
-## Kiểm tra
+## Check
 
 ```sh
 launchctl kickstart gui/$(id -u)/com.phil.charge-by-location
 cat ~/.charge_loc ~/.charge_loc.log
 ```
 
-- `~/.charge_loc`: trạng thái hiện tại, dạng `MAC thời_điểm_đến mode`.
-- `~/.charge_loc.log`: mỗi lần đổi charge limit ghi một dòng.
-- `/tmp/charge-by-location.err`: lỗi (vd. chưa có shortcut).
+- `~/.charge_loc`: current state, formatted as `MAC arrival_time mode`.
+- `~/.charge_loc.log`: one line per charge limit change.
+- `/tmp/charge-by-location.err`: errors (e.g. missing shortcuts).
 
-> **Lưu ý:** chạy script trực tiếp từ một số terminal (vd. Claude Code) có thể không đọc được bảng ARP vì macOS ẩn đi (Local Network privacy) → script giữ nguyên trạng thái. Dùng `launchctl kickstart` như trên để test.
+> **Note:** running the script directly from some terminals (e.g. Claude Code) may fail to read the ARP table because macOS hides it (Local Network privacy), so the script leaves the state unchanged. Use `launchctl kickstart` as above to test.
 
-## Gỡ
+## Uninstall
 
 ```sh
 launchctl bootout gui/$(id -u)/com.phil.charge-by-location
