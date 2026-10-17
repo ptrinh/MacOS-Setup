@@ -9,7 +9,10 @@ Curated from the old [`macbook-setup/default-writes.sh`](https://github.com/ptri
 ```sh
 ./defaults.sh          # user-level settings
 ./defaults.sh --sudo   # also: mute boot chime, show host info on the login window
+./defaults.sh --hostname PhilMac --login-message "If found, call ..."   # new Mac
 ```
+
+`--hostname` and `--login-message` imply `--sudo`. Keep personal details (phone number) out of the repo and pass them on the command line.
 
 Safe to re-run. Some changes need a logout/restart.
 
@@ -27,4 +30,8 @@ Safe to re-run. Some changes need a logout/restart.
 | Debug menus (Address Book, iCal, Disk Utility, App Store), SuperDrive, AirDrop over Ethernet | Obsolete |
 | `lsregister -kill` | One-off cleanup, not a setting |
 | Hot corners (top left Mission Control, bottom left Desktop) | Not used on the current Mac |
+| Login screen background | Lock screen uses the desktop wallpaper since Mojave |
+| Disable automatic update checks | Misses security updates |
+| `dscacheutil -flushcache` | One-off DNS flush, not a setting |
+| Other commented-out tweaks (Dock autohide/spacers/translucent hidden apps, wipe Dock, Launchpad, shake to find cursor, Bluetooth bitpool) | Not used on the current Mac or obsolete |
 | `SystemAudioVolume` nvram | Replaced by `StartupMute` |

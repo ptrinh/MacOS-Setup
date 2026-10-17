@@ -1,8 +1,22 @@
 #!/bin/zsh
 # Opinionated macOS defaults, curated from the old macbook-setup/default-writes.sh
 # and checked against macOS 27 (Apple Silicon). Safe to re-run.
-# Usage: ./defaults.sh            # user-level settings only
-#        ./defaults.sh --sudo     # also apply the system-level settings (asks for password)
+# Usage: ./defaults.sh [--sudo] [--hostname NAME] [--login-message TEXT]
+#   (no options)          user-level settings only
+#   --sudo                also apply the system-level settings (asks for password)
+#   --hostname NAME       set ComputerName / HostName / LocalHostName / NetBIOS name (implies --sudo)
+#   --login-message TEXT  message on the login/lock screen, e.g. "If found, call ..." (implies --sudo)
+
+SUDO=; HOSTNAME_NEW=; LOGIN_MSG=
+while (( $# )); do
+  case "$1" in
+    --sudo) SUDO=1 ;;
+    --hostname) HOSTNAME_NEW="$2"; SUDO=1; shift ;;
+    --login-message) LOGIN_MSG="$2"; SUDO=1; shift ;;
+    *) echo "Unknown option: $1" >&2; exit 1 ;;
+  esac
+  shift
+done
 
 # Close System Settings so it doesn't overwrite what we change
 osascript -e 'tell application "System Settings" to quit' 2>/dev/null
@@ -169,11 +183,22 @@ defaults write com.apple.TextEdit TabWidth -int 4
 # System-level (sudo)                                                         #
 ###############################################################################
 
-if [[ "$1" == "--sudo" ]]; then
+if [[ -n "$SUDO" ]]; then
   # No boot chime
   sudo nvram StartupMute=%01
   # Show IP, hostname, OS version when clicking the clock on the login window
   sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+  if [[ -n "$HOSTNAME_NEW" ]]; then
+    sudo scutil --set ComputerName "$HOSTNAME_NEW"
+    sudo scutil --set HostName "$HOSTNAME_NEW"
+    sudo scutil --set LocalHostName "$HOSTNAME_NEW"   # letters, digits and hyphens only
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$HOSTNAME_NEW"
+  fi
+
+  if [[ -n "$LOGIN_MSG" ]]; then
+    sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText "$LOGIN_MSG"
+  fi
 fi
 
 ###############################################################################
