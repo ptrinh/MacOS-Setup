@@ -2,6 +2,8 @@
 # Upgrade all casks later (including self-updating ones): brew upgrade --cask --greedy
 
 tap "ptrinh/tap"
+tap "ptrinh/notiful"
+tap "ptrinh/relaykey"
 
 # Desktop apps
 cask "google-chrome"
@@ -26,6 +28,8 @@ cask "the-unarchiver"
 cask "balenaetcher"
 cask "switchresx"
 cask "ptrinh/tap/dotbar"   # DotBar (github.com/ptrinh/DotBar)
+cask "ptrinh/notiful/notiful"           # Notiful (github.com/ptrinh/Notiful)
+cask "ptrinh/relaykey/relaykey-client"  # RelayKey client (github.com/ptrinh/relaykey-public)
 
 # Dev tools
 cask "orbstack"
