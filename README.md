@@ -1,6 +1,6 @@
 # MacOS-Setup
 
-Scripts and configuration for automating macOS.
+Script to setup my Macbook with M-series chip, optimized for performance, RAM usage, and AI Coding.
 
 | Folder | Description |
 |---|---|
