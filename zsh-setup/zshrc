@@ -11,6 +11,7 @@ bindkey "^[[1;9F" end-of-line             # Cmd+End variant
 bindkey "^[[1;3D" backward-word           # Option+Left
 bindkey "^[[1;3C" forward-word            # Option+Right
 bindkey "^[^?"    backward-kill-word      # Option+Delete
+WORDCHARS=${WORDCHARS//\/}               # treat / as a word boundary: Option+Delete on a/b/c removes only c
 
 # Delete whole line
 bindkey "^U"      kill-whole-line         # Ctrl+U (and Cmd+Del via Terminal)
