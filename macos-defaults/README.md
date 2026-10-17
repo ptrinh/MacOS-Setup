@@ -4,6 +4,8 @@ Opinionated `defaults write` settings for a new Mac: faster animations, Finder t
 
 Curated from the old [`macbook-setup/default-writes.sh`](https://github.com/ptrinh/macbook-setup/blob/main/default-writes.sh) and checked against macOS 27 on Apple Silicon. Where the old script disagreed with how the current Mac is actually set up, the current setup won (natural scrolling and autocorrect stay on, Dock size 42, new Finder windows open Home, Activity Monitor shows CPU history, hot corners left at the macOS defaults).
 
+Additions verified on macOS 27.0.1 (key present in the system): folders first in Finder, no screenshot thumbnail, no gaps between tiled windows, Globe key opens emoji, Photos doesn't auto-open for iPhones, and Liquid Glass off. The last one is an unofficial key (`com.apple.SwiftUI.DisableSolarium`), needs a restart, and may stop working in updates; undo with `defaults delete -g com.apple.SwiftUI.DisableSolarium`.
+
 ## Usage
 
 ```sh
@@ -34,4 +36,5 @@ Safe to re-run. Some changes need a logout/restart.
 | Disable automatic update checks | Misses security updates |
 | `dscacheutil -flushcache` | One-off DNS flush, not a setting |
 | Other commented-out tweaks (Dock autohide/spacers/translucent hidden apps, wipe Dock, Launchpad, shake to find cursor, Bluetooth bitpool) | Not used on the current Mac or obsolete |
+| Floating Finder sidebar off (`NSSplitViewItemSidebarDefaultsToFloatingAppearance`) | macOS 26 key, no longer present in macOS 27 |
 | `SystemAudioVolume` nvram | Replaced by `StartupMute` |

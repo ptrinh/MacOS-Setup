@@ -71,6 +71,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+# Globe (fn) key: 0 nothing, 1 change input source, 2 emoji & symbols, 3 dictation
+defaults write com.apple.HIToolbox AppleFnUsageType -int 2
+
 # Ctrl + scroll to zoom, follow keyboard focus while zoomed
 # (com.apple.universalaccess may need Full Disk Access for the terminal)
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true 2>/dev/null
@@ -83,6 +86,18 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true 2>
 
 defaults write com.apple.screencapture type -string "png"
 defaults write com.apple.screencapture disable-shadow -bool true
+# No floating thumbnail after taking a screenshot (saves immediately)
+defaults write com.apple.screencapture show-thumbnail -bool false
+
+###############################################################################
+# Windows and appearance                                                      #
+###############################################################################
+
+# No gaps between tiled windows
+defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
+
+# Turn off Liquid Glass transparency (unofficial key, needs a restart, may stop working in updates)
+defaults write NSGlobalDomain com.apple.SwiftUI.DisableSolarium -bool true
 
 ###############################################################################
 # Finder                                                                      #
@@ -117,6 +132,10 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Keep folders on top when sorting by name (windows and desktop)
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true
 
 # No warnings when changing an extension or emptying the Trash
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
@@ -166,6 +185,9 @@ defaults write com.apple.terminal StringEncodings -array 4
 # iTerm2: no prompt when quitting
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
+# Don't open Photos when an iPhone or camera is plugged in
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
 # Activity Monitor: open main window, CPU history in Dock icon, all processes, sort by CPU
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 defaults write com.apple.ActivityMonitor IconType -int 6
@@ -205,7 +227,7 @@ fi
 # Restart affected apps                                                       #
 ###############################################################################
 
-for app in "Activity Monitor" "cfprefsd" "Dock" "Finder" "SystemUIServer"; do
+for app in "Activity Monitor" "cfprefsd" "Dock" "Finder" "SystemUIServer" "WindowManager"; do
   killall "$app" >/dev/null 2>&1
 done
 echo "Done. Some changes need a logout/restart to take effect."
