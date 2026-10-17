@@ -1,0 +1,61 @@
+export PATH="$HOME/.local/bin:$PATH"
+
+# Bind escape sequences that macOS Terminal sends with Cmd
+# These work because Terminal sends specific escape codes for Cmd+arrows
+bindkey "^[[1;9D" beginning-of-line       # Cmd+Left
+bindkey "^[[1;9C" end-of-line             # Cmd+Right
+bindkey "^[[1;9H" beginning-of-line       # Cmd+Home variant
+bindkey "^[[1;9F" end-of-line             # Cmd+End variant
+
+# Word movement (usually already works, but to be safe)
+bindkey "^[[1;3D" backward-word           # Option+Left
+bindkey "^[[1;3C" forward-word            # Option+Right
+bindkey "^[^?"    backward-kill-word      # Option+Delete
+
+# Delete whole line
+bindkey "^U"      kill-whole-line         # Ctrl+U (and Cmd+Del via Terminal)
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+
+# Completion (Homebrew completions come from `brew shellenv` in ~/.zprofile)
+fpath=(~/.zsh/completions $fpath)  # drop extra completions here, e.g. `cf complete zsh > ~/.zsh/completions/_cf`
+autoload -Uz compinit
+# Speed hack: only rebuild the completion dump once per day instead of every shell start
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) || ! -f ${ZDOTDIR:-$HOME}/.zcompdump ]]; then
+  compinit
+else
+  compinit -C
+fi
+zstyle ':completion:*' menu select                         # arrow keys through the completion menu
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # case-insensitive matching
+
+# Colored ls
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# Aliases
+alias ll='ls -lhA'
+alias la='ls -lhAG'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias g='git'
+alias gs='git status'
+alias gd='git diff'
+
+# USDT/VND exchange rate
+vnd() { curl "https://aloride.com/aloride/usdtvnd.php?$1" }
+
+# Autosuggestions, then syntax highlighting (must be the last widget plugin)
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Starship prompt (~/.config/starship.toml)
+eval "$(starship init zsh)"
+
+# Machine-specific settings and secrets (not in the repo)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

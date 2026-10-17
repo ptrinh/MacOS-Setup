@@ -1,6 +1,8 @@
 # Apps for a new Mac. Install with: brew bundle --file Brewfile
 # Upgrade all casks later (including self-updating ones): brew upgrade --cask --greedy
 
+tap "ptrinh/tap"
+
 # Desktop apps
 cask "google-chrome"
 cask "microsoft-edge"
@@ -23,6 +25,7 @@ cask "blackhole-2ch"       # virtual audio device, may need a restart
 cask "the-unarchiver"
 cask "balenaetcher"
 cask "switchresx"
+cask "ptrinh/tap/dotbar"   # DotBar (github.com/ptrinh/DotBar)
 
 # Dev tools
 cask "orbstack"

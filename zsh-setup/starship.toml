@@ -1,0 +1,60 @@
+add_newline = false
+command_timeout = 500
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$character"""
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+style = "bold yellow"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = "[$all_status$ahead_behind]($style) "
+
+# Show username only when in SSH or as root
+[username]
+style_user = "bold yellow"
+style_root = "bold red"
+format = "[$user]($style)@"
+disabled = false
+show_always = false
+
+# Show hostname only when in SSH
+[hostname]
+ssh_only = true
+ssh_symbol = "🌐 "
+style = "bold red"  # red hostname = remote, hard to miss
+format = "[$ssh_symbol$hostname]($style):"
+trim_at = "."
+
+# SSH symbol prefix (optional, looks nice)
+[shell]
+disabled = true
+
+# Disable slow modules
+[aws]
+disabled = true
+[gcloud]
+disabled = true
+[python]
+disabled = true
+[nodejs]
+disabled = true
+[package]
+disabled = true
