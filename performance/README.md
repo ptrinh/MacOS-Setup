@@ -11,7 +11,7 @@ Lighter RAM, CPU and SSD use on an M-series Mac, based on what actually uses res
 
 | Area | What |
 |---|---|
-| Login | Staggered launch of heavy apps (Discord 20 s, Lark 30 s, Chrome 50 s, Dropbox 60 s after login) via LaunchAgents, instead of all at once. Edit `DELAYED` in the script. Remove those apps from Login Items |
+| Login | Staggered launch of heavy apps (Discord 20 s, Lark (LarkSuite) 30 s, Chrome 50 s, Dropbox 60 s after login) via LaunchAgents, instead of all at once. Edit `DELAYED` in the script. Remove those apps from Login Items |
 | Background services | Disable Siri agent, Folder Actions, Script Menu, MDM enrollment agent, beta seed agent; Siri off |
 | RAM / GPU | Reduce transparency and motion; Chrome Memory Saver on (recommended policy); OrbStack VM doesn't start at login; idle Gradle daemons stop after 15 min instead of 3 h |
 | Power (`--sudo`) | On charger never sleep (long agent runs and builds finish), display off after 5 min (charger) / 2 min (battery) |

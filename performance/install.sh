@@ -10,14 +10,14 @@ UID_=$(id -u)
 ###############################################################################
 DELAYED=(
   "discord:Discord:20"
-  "lark:Lark:30"
+  "lark:LarkSuite:30"
   "chrome:Google Chrome:50"
   "dropbox:Dropbox:60"
 )
 mkdir -p ~/Library/LaunchAgents
 for entry in $DELAYED; do
   IFS=: read -r label app delay <<< "$entry"
-  [[ -d "/Applications/$app.app" ]] || { echo "Skip delayed launch: $app not installed"; continue; }
+  open -Ra "$app" 2>/dev/null || { echo "Skip delayed launch: $app not installed"; continue; }
   plist=~/Library/LaunchAgents/com.phil.delay.$label.plist
   cat > $plist <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
