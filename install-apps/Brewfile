@@ -1,0 +1,31 @@
+# Apps for a new Mac. Install with: brew bundle --file Brewfile
+# Upgrade all casks later (including self-updating ones): brew upgrade --cask --greedy
+
+# Desktop apps
+cask "google-chrome"
+cask "microsoft-edge"
+cask "iterm2"
+cask "textmate"
+cask "discord"
+cask "slack"
+cask "zoom"
+cask "dropbox"
+cask "ledger-wallet"       # formerly ledger-live
+cask "steam"               # Intel-only launcher, needs Rosetta
+cask "time-out"
+
+# Utilities
+cask "little-snitch"       # approve the system extension in System Settings after install
+cask "windows-app"         # replaces Microsoft Remote Desktop
+cask "grandperspective"
+cask "cd-to"
+cask "blackhole-2ch"       # virtual audio device, may need a restart
+cask "the-unarchiver"
+cask "balenaetcher"
+cask "switchresx"
+
+# Dev tools
+cask "orbstack"
+cask "sequel-ace"
+cask "utm"                 # virtual machines
+brew "dosbox-x"            # the dosbox-x cask is disabled in Homebrew; the formula works
