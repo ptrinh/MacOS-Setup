@@ -1,8 +1,8 @@
 # macos-defaults
 
-Opinionated `defaults write` settings for a new Mac: faster animations, Finder that shows everything, fast key repeat, no smart quotes, Dock and hot corners, plus a few app tweaks.
+Opinionated `defaults write` settings for a new Mac: faster animations, Finder that shows everything, fast key repeat, no smart quotes, Dock, plus a few app tweaks.
 
-Curated from the old [`macbook-setup/default-writes.sh`](https://github.com/ptrinh/macbook-setup/blob/main/default-writes.sh) and checked against macOS 27 on Apple Silicon. Where the old script disagreed with how the current Mac is actually set up, the current setup won (natural scrolling and autocorrect stay on, Dock size 42, new Finder windows open Home, Activity Monitor shows CPU history).
+Curated from the old [`macbook-setup/default-writes.sh`](https://github.com/ptrinh/macbook-setup/blob/main/default-writes.sh) and checked against macOS 27 on Apple Silicon. Where the old script disagreed with how the current Mac is actually set up, the current setup won (natural scrolling and autocorrect stay on, Dock size 42, new Finder windows open Home, Activity Monitor shows CPU history, hot corners left at the macOS defaults).
 
 ## Usage
 
@@ -26,4 +26,5 @@ Safe to re-run. Some changes need a logout/restart.
 | Dashboard, Secure Empty Trash, subpixel font smoothing, HiDPI, Quick Look text selection | Removed from macOS or now default |
 | Debug menus (Address Book, iCal, Disk Utility, App Store), SuperDrive, AirDrop over Ethernet | Obsolete |
 | `lsregister -kill` | One-off cleanup, not a setting |
+| Hot corners (top left Mission Control, bottom left Desktop) | Not used on the current Mac |
 | `SystemAudioVolume` nvram | Replaced by `StartupMute` |

@@ -124,7 +124,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
   General -bool true OpenWith -bool true Privileges -bool true
 
 ###############################################################################
-# Dock, Mission Control and hot corners                                       #
+# Dock and Mission Control                                                     #
 ###############################################################################
 
 defaults write com.apple.dock tilesize -int 42
@@ -138,13 +138,6 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # Don't rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
-
-# Hot corners: 0 none, 2 Mission Control, 3 app windows, 4 Desktop, 5 screen saver,
-# 10 display sleep, 11 Launchpad, 12 Notification Center, 13 Lock Screen, 14 Quick Note
-defaults write com.apple.dock wvous-tl-corner -int 2   # top left: Mission Control
-defaults write com.apple.dock wvous-tl-modifier -int 0
-defaults write com.apple.dock wvous-bl-corner -int 4   # bottom left: Desktop
-defaults write com.apple.dock wvous-bl-modifier -int 0
 
 ###############################################################################
 # Apps                                                                        #
