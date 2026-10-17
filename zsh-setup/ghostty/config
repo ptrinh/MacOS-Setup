@@ -14,7 +14,7 @@ copy-on-select = clipboard
 # Same line-editing keys as in iTerm2/Terminal (readline/emacs sequences zsh understands)
 keybind = alt+left=esc:b
 keybind = alt+right=esc:f
-keybind = alt+backspace=esc:\x7f
+keybind = alt+backspace=text:\x1b\x7f
 keybind = super+left=text:\x01
 keybind = super+right=text:\x05
 keybind = super+backspace=text:\x15
