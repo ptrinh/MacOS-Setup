@@ -24,6 +24,7 @@ cask "little-snitch"       # approve the system extension in System Settings aft
 cask "windows-app"         # replaces Microsoft Remote Desktop
 cask "grandperspective"
 cask "cd-to"
+cask "markdown-preview"
 cask "blackhole-2ch"       # virtual audio device, may need a restart
 cask "the-unarchiver"
 cask "balenaetcher"
