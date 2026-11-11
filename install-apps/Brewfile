@@ -30,6 +30,7 @@ cask "the-unarchiver"
 cask "balenaetcher"
 cask "switchresx"
 cask "ptrinh/tap/dotbar"   # DotBar (github.com/ptrinh/DotBar)
+cask "ptrinh/tap/touchenv" # touchenv: secrets and SSH keys in the Keychain behind Touch ID (github.com/ptrinh/touch-env)
 cask "ptrinh/notiful/notiful"           # Notiful (github.com/ptrinh/Notiful)
 cask "ptrinh/relaykey/relaykey-client"  # RelayKey client (github.com/ptrinh/relaykey-public)
 
@@ -38,3 +39,4 @@ cask "orbstack"
 cask "sequel-ace"
 cask "utm"                 # virtual machines
 brew "dosbox-x"            # the dosbox-x cask is disabled in Homebrew; the formula works
+brew "sevenzip"            # 7zz: 7-Zip on the command line, AES-256 encrypted archives
